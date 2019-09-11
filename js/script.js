@@ -1,12 +1,12 @@
-// TEST CHANGE
-
 /******************************************
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
    
-// Study guide for this project - https://drive.google.com/file/dTechdegree-Project-1/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
+// Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
 
+// For anyone on project 2 who wants to add the search feature 
+// We Bos's Vanilla Javascript course day 6 is great practice https://javascript30.com/
 
 /*** 
    Add your global variables that store the DOM elements you will 
@@ -17,10 +17,17 @@ FSJS project 2 - List Filter and Pagination
    going to create. A good general rule of thumb is if the variable 
    will only be used inside of a function, then it can be locally 
    scoped to that function.
+
+      Create a variable to store the student list item elements in the student list.
+      Pro Tip: Log out the variable storing the list to ensure it equals the list of 
+      li items and not the container of the li elements.
 ***/
 
 
 
+const studentList = document.querySelector('.student-list').children;
+console.log(studentList);
+const studentsPerPage = 10
 
 /*** 
    Create the `showPage` function to hide all of the items in the 
