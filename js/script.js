@@ -43,8 +43,23 @@ const studentsPerPage = 10
        that will be passed into the parens later when you call or 
        "invoke" the function 
 ***/
+const showPage = (list, page) => {
+   let startList = (page * studentsPerPage) - 10;
+   let endList = (page * studentsPerPage) - 1;
+   for (let i = 0; i < list.length; i += 1) {
+      if (i >= startList
+      && i <= endList) {
+         list[i].style.display = 'block';
+      }
+      else {
+         list[i].style.display = 'none';
+      }
+      
 
+   }
+}
 
+showPage(studentList, 1);
 
 
 /*** 
