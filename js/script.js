@@ -23,8 +23,6 @@ FSJS project 2 - List Filter and Pagination
       li items and not the container of the li elements.
 ***/
 
-
-
 const studentList = document.querySelector('.student-list').children;
 console.log(studentList);
 const studentsPerPage = 10
@@ -44,12 +42,12 @@ const studentsPerPage = 10
        "invoke" the function 
 ***/
 const showPage = (list, page) => {
-   let startList = (page * studentsPerPage) - 10;
+   let startList = (page * studentsPerPage) - studentsPerPage; //subtracted "studentsPerPage" instead of "10", this makes code easier to modify if you want to quickly change display per page to a number other than 10
    let endList = (page * studentsPerPage) - 1;
    for (let i = 0; i < list.length; i += 1) {
       if (i >= startList
       && i <= endList) {
-         list[i].style.display = 'block';
+         list[i].style.display;
       }
       else {
          list[i].style.display = 'none';
@@ -67,7 +65,14 @@ showPage(studentList, 1);
    functionality to the pagination buttons.
 ***/
 
-
+const appendPageLinks = (list) => {
+   const numberOfPages = Math.ceil(studentList.length/studentsPerPage); //calculates # of pages needed and uses Math.Ceil to round up to whole number 
+   const div = document.createElement('div');
+   div.classname = ('pagination');
+   document.querySelector('.page').appendChild('.pagination'); //??? should this be 'div' instead of pagination?//
+   const ul = document.createElement('ul');
+   div.appendChild(ul);
+}
 
 
 
