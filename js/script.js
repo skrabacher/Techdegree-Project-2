@@ -73,7 +73,7 @@ const appendPageLinks = (list) => {
    div.appendChild(ul); //defines ul as a child node of div node
    
 
-   //for loop to add li and a tags with the page number text
+   //for loop to add li and a tags with the page number text (aka to manifest series of Pagination Buttons = numberOfPages)
    for (let i = 0; i < numberOfPages; i += 1) {
       const li = document.createElement('li'); //creates li node
       ul.appendChild(li); //defines li as child node of ul node
@@ -85,12 +85,16 @@ const appendPageLinks = (list) => {
       a.href = '#'; //hyperlink to top of the page
       a.textContent = i +1; //defines text content of hyperlink, +1 because i starts at 0
    }
+   //event listener to make pagination buttons respond to user click
    a.addEventListener('click', (event) => {
-      if (event.target.tagName == 'A') {
+      for (let i = 0; i < numberOfPages; i += 1) {
+         //code to remove active class from all a nodes (should just be first a node per the for loop above)
+      }
+      if (event.target.tagName == 'A') { //code to add active class to the node that was clicked
          a.className = "active";
       }                         
     });
 }
 appendPageLinks(studentList);
 
-// // Remember to delete the comments that came with this file, and replace them with your own code comments.
+// // ***Remember to delete the comments that came with this file, and replace them with your own code comments.
