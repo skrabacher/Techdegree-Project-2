@@ -60,20 +60,35 @@ const showPage = (list, page) => {
 showPage(studentList, 1);
 
 
-/*** 
-   Create the `appendPageLinks function` to generate, append, and add 
-   functionality to the pagination buttons.
-***/
+// /*** 
+//    Create the `appendPageLinks function` to generate, append, and add 
+//    functionality to the pagination buttons.
+// ***/
 
 const appendPageLinks = (list) => {
-   const numberOfPages = Math.ceil(studentList.length/studentsPerPage); //calculates # of pages needed and uses Math.Ceil to round up to whole number 
+   const numberOfPages = Math.ceil(list.length/studentsPerPage); //calculates # of pages needed and uses Math.Ceil to round up to whole number 
+   
    const div = document.createElement('div');
    div.classname = ('pagination');
-   document.querySelector('.page').appendChild('.pagination'); //??? should this be 'div' instead of pagination?//
+   document.querySelector('.page').appendChild(div); //??? received "Uncaught TypeError" alert when using "'.pagination'" instead of "div". WHY? need to research. ANSWER: appendChild Method uses variables only? Can not figure out how to append all nodes of certain class. Will have to rely on just DIV for now :/ but I don't like this cause other divs might be accessed than the ones i intend.
    const ul = document.createElement('ul');
    div.appendChild(ul);
+   //for loop to add li and a tags with the page number text
+   for (let i = 0; i < numberOfPages; i += 1) {
+      const li = document.createElement('li');
+      ul.appendChild('li');
+      const a = document.createElement('a');
+      
+      li.appendChild('a');
+      if (i == 0) {
+         a.className = "active";
+      }
+      
+      
+
+   }
 }
 
+appendPageLinks(studentList);
 
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+// // Remember to delete the comments that came with this file, and replace them with your own code comments.
