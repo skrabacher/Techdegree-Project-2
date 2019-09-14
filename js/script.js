@@ -66,25 +66,30 @@ showPage(studentList, 1);
 const appendPageLinks = (list) => {
    const numberOfPages = Math.ceil(list.length/studentsPerPage); //calculates # of pages needed and uses Math.Ceil to round up to whole number 
    
-   const div = document.createElement('div');
-   div.classname = ('pagination');
+   const div = document.createElement('div'); //creates div node
+   div.classname = ('pagination'); // adds pagination class name to div node
    document.querySelector('.page').appendChild(div); //??? received "Uncaught TypeError" alert when using "'.pagination'" instead of "div". WHY? need to research. ANSWER: appendChild Method uses variables only? Can not figure out how to append all nodes of certain class. Will have to rely on just DIV for now :/ but I don't like this cause other divs might be accessed than the ones i intend.
-   const ul = document.createElement('ul');
-   div.appendChild(ul);
+   const ul = document.createElement('ul'); //creates ul node
+   div.appendChild(ul); //defines ul as a child node of div node
    
 
    //for loop to add li and a tags with the page number text
    for (let i = 0; i < numberOfPages; i += 1) {
-      const li = document.createElement('li');
-      ul.appendChild(li);
-      const a = document.createElement('a');
-      li.appendChild(a);
+      const li = document.createElement('li'); //creates li node
+      ul.appendChild(li); //defines li as child node of ul node
+      const a = document.createElement('a'); //creates a node
+      li.appendChild(a); //defines a as child node of li node
       if (i == 0) {
-         a.className = "active";
+         a.className = "active"; // this class denotes which page of students will be shown.
       }
-      a.href = '#';
-      a.textContent = i +1;
+      a.href = '#'; //hyperlink to top of the page
+      a.textContent = i +1; //defines text content of hyperlink, +1 because i starts at 0
    }
+   a.addEventListener('click', (event) => {
+      if (event.target.tagName == 'A') {
+         a.className = "active";
+      }                         
+    });
 }
 appendPageLinks(studentList);
 
