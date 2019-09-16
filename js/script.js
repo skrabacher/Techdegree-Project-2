@@ -86,13 +86,18 @@ const appendPageLinks = (list) => {
       a.textContent = i +1; //defines text content of hyperlink, +1 because i starts at 0
    }
    //event listener to make pagination buttons respond to user click
-   a.addEventListener('click', (event) => {
-      for (let i = 0; i < numberOfPages; i += 1) {
-         //code to remove active class from all a nodes (should just be first a node per the for loop above)
+   let li = ul.firstElementChild;
+   let paginationLink = li.firstElementChild;
+   paginationLink.addEventListener('click', (event) => {
+      for (let i = 0; i < numberOfPages; i += 1) { //code to remove active class from all a nodes (should just be first a node per the for loop above)
+         let button = paginationLink[i]
       }
-      if (event.target.tagName == 'A') { //code to add active class to the node that was clicked
-         a.className = "active";
-      }                         
+      if (button.classname == 'active') { 
+         button.className.remove = 'active';
+      }
+      event.target.className = 'active'; //add active class to the node that was clicked  
+      let pageNumber = event.target.textContent; //variable to pass as page number parameter to the showpage function
+      showPage(studentList, pageNumber);                 
     });
 }
 appendPageLinks(studentList);
