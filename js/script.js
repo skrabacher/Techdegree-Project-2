@@ -56,7 +56,7 @@ const showPage = (list, page) => {
 
    }
 }
-showPage(studentList, 1);
+// showPage(studentList, 1); //no need to hard code this in, showpage can be called
 
 // /*** 
 //    Create the `appendPageLinks function` to generate, append, and add 
@@ -81,6 +81,7 @@ const appendPageLinks = (list) => {
       li.appendChild(a); //defines a as child node of li node
       if (i == 0) {
          a.className = "active"; // this class denotes which page of students will be shown.
+         showPage(studentList, i +1); // *** any list length or page start if you call the show page function here rather than right after defining the showpage function
       }
       a.href = '#'; //hyperlink to top of the page
       a.textContent = i +1; //defines text content of hyperlink, +1 because i starts at 0
@@ -100,7 +101,7 @@ const appendPageLinks = (list) => {
 
       
       event.target.className = 'active'; //adds active class to the node that was clicked  
-      let pageNumber = event.target.textContent; //variable to pass as page number parameter to the showpage function
+      let pageNumber = document.querySelector('.active'); //variable to pass as page number parameter to the showpage function
       console.log(event.target.textContent);
       showPage(list, pageNumber);                 
     });
