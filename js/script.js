@@ -47,7 +47,7 @@ const showPage = (list, page) => {
    for (let i = 0; i < list.length; i += 1) {
       if (i >= startList
       && i <= endList) {
-         list[i].style.display;
+         list[i].style.display = 'block';
       }
       else {
          list[i].style.display = 'none';
@@ -55,6 +55,7 @@ const showPage = (list, page) => {
       
 
    }
+   console.log('I am in show page');
 }
 // showPage(studentList, 1); //no need to hard code this in, showpage can be called
 
@@ -102,8 +103,9 @@ const appendPageLinks = (list) => {
       
       event.target.className = 'active'; //adds active class to the node that was clicked  
       let pageNumber = document.querySelector('.active'); //variable to pass as page number parameter to the showpage function
-      console.log(event.target.textContent);
-      showPage(list, pageNumber);                 
+      console.log(pageNumber.textContent);
+      console.log(typeof parseInt(pageNumber.textContent)); // uses typeof method to ensure string is being converted to a number using parseItn
+      showPage(list, parseInt(pageNumber.textContent));  //converts textContent from string to number and passes number into showPage function               
     });
 }
 appendPageLinks(studentList);
