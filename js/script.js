@@ -72,3 +72,36 @@ const appendPageLinks = (list) => {
     });
 }
 appendPageLinks(studentList);
+
+
+//creates and appends search bar
+// const searchBar = (input) => {
+   const searchDiv = document.createElement('div'); //creates searchDiv node
+   document.querySelector('.page-header').appendChild(searchDiv);//appends searchDiv node to parent div with page-header class
+   searchDiv.className = ('student-search'); //adds student-search class name to searchDiv node
+   const searchInput = document.createElement('input'); //creates searchInput node
+   searchInput.placeholder = "Search for students..."; //defines placeholder text for searchInput node
+   searchDiv.appendChild(searchInput);//appends searchInput node to searchDiv (no need to do this: document.querySelector('.student-search').appendChild(searchInput);)
+   const searchButton = document.createElement('button');
+   searchButton.textContent = 'search';
+   searchDiv.appendChild(searchButton); //appends searchButton node to searchDiv node
+
+   //click event listener for search button
+   searchButton.addEventListener('click', (event) => {
+      
+   });   
+
+// };
+
+// <!-- student search HTML to add dynamically -->
+// <div class="student-search">
+//   <input placeholder="Search for students...">
+//   <button>Search</button>
+// </div>
+// <!-- end search -->//</div>
+
+// const div = document.createElement('div'); //creates div node
+//    div.className = ('pagination'); // adds pagination class name to div node
+//    document.querySelector('.page').appendChild(div); // appends div node to 
+//    const ul = document.createElement('ul'); //creates ul node
+//    div.appendChild(ul); //defines ul as a child node of div node
