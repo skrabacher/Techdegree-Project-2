@@ -81,14 +81,15 @@ appendPageLinks(studentList);
    document.querySelector('.page-header').appendChild(searchDiv);//appends searchDiv node to parent div with page-header class
    searchDiv.className = ('student-search'); //adds student-search class name to searchDiv node
    const searchBoxInput = document.createElement('input'); //creates searchBoxInput node
+   searchBoxInput.className = 'userSearchInput';
    searchBoxInput.placeholder = "Search for students..."; //defines placeholder text for searchBoxInput node
    searchDiv.appendChild(searchBoxInput);//appends searchBoxInput node to searchDiv (no need to do this: document.querySelector('.student-search').appendChild(searchBoxInput);)
    const searchButton = document.createElement('button');
    searchButton.textContent = 'search';
    searchDiv.appendChild(searchButton); //appends searchButton node to searchDiv node
 
-   let searchInput = searchBoxInput.textContent; //variable to store text content of searchBoxInput *** NOT SURE I NEED THIS?
-   console.log(searchInput);
+   let searchInput = document.getElementsByTagName('input')[0].value; //variable to store text content of searchBoxInput *** NOT SURE I NEED THIS? 
+   console.log(searchInput)
    
    const names = document.querySelectorAll('h3');// Variable to store h3 tags(aka student names) as a list *** NOT SURE I NEED THIS?
    console.log(names);
@@ -98,7 +99,7 @@ appendPageLinks(studentList);
    const performSearch = (searchInput, names) => {
       console.log('You are in performSearch');
       // 1a. Create two `console.log` statements to log out the `parameters` — searchInput, names 
-      console.log(searchInput); 
+      console.log(document.getElementsByClassName('userSearchInput')[0].value); //add .toString()? right after value
       console.log('searchInput above');
       console.log(names);
       // 1b. Loop over the `names` parameter
@@ -112,18 +113,19 @@ appendPageLinks(studentList);
       
       // 1c. Create a conditional that checks two conditions:
         // 1ca. If the `searchInput.value.length` does not equal the digit zero AND `names[i].textContent.toLowerCase()` `includes` `searchInput.value.toLowerCase())`
-        if ((searchInput.length !== 0) && (names[i].textContent.toLowerCase().includes(searchInput.toLowerCase()) )) { 
+      //   if ((searchInput.value.length !== 0) && (names[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase()) )) { 
           // 1cb. Add the class name 'match` to `names[i]` 
           names[i].className = 'match';
         }
       }
-      };
+      // }
+      ;
    
 
 //Click Event and Keyup Listeners for the Search Bar and Search Button
    searchButton.addEventListener('click', (event) => {
       event.preventDefault();
-      performSearch(searchInput, nameList);
+      performSearch(searchInput, names);
       console.log('Search button is functional!');
       
    });   
@@ -147,3 +149,9 @@ appendPageLinks(studentList);
 //    document.querySelector('.page').appendChild(div); // appends div node to 
 //    const ul = document.createElement('ul'); //creates ul node
 //    div.appendChild(ul); //defines ul as a child node of div node
+
+
+//SEARCH FUNCTION DESIGN SUGGESTION FROM MCKENZIE > if something has an indexOF -1 (it means that it's not in the index)
+   //if the index of your search input does not equal negative one [indexOf(searchInput) != -1] then it is in the index somewhere [essentially something has to have a 0+ value to be in an index]
+      //and being in the index means that it is in the search results
+   
