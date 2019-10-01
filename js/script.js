@@ -77,31 +77,33 @@ appendPageLinks(studentList);
 
 //creates and appends search bar
 
-   const searchDiv = document.createElement('div'); //creates searchDiv node
-   document.querySelector('.page-header').appendChild(searchDiv);//appends searchDiv node to parent div with page-header class
-   searchDiv.className = ('student-search'); //adds student-search class name to searchDiv node
-   const searchBoxInput = document.createElement('input'); //creates searchBoxInput node
-   searchBoxInput.className = 'userSearchInput';
-   searchBoxInput.placeholder = "Search for students..."; //defines placeholder text for searchBoxInput node
-   searchDiv.appendChild(searchBoxInput);//appends searchBoxInput node to searchDiv (no need to do this: document.querySelector('.student-search').appendChild(searchBoxInput);)
-   const searchButton = document.createElement('button');
-   searchButton.textContent = 'search';
-   searchDiv.appendChild(searchButton); //appends searchButton node to searchDiv node
+const searchDiv = document.createElement('div'); //creates searchDiv node
+document.querySelector('.page-header').appendChild(searchDiv);//appends searchDiv node to parent div with page-header class
+searchDiv.className = ('student-search'); //adds student-search class name to searchDiv node
+const searchBoxInput = document.createElement('input'); //creates searchBoxInput node
+searchBoxInput.className = 'userSearchInput';
+searchBoxInput.placeholder = "Search for students..."; //defines placeholder text for searchBoxInput node
+searchDiv.appendChild(searchBoxInput);//appends searchBoxInput node to searchDiv (no need to do this: document.querySelector('.student-search').appendChild(searchBoxInput);)
+const searchButton = document.createElement('button');
+searchButton.textContent = 'search';
+searchDiv.appendChild(searchButton); //appends searchButton node to searchDiv node
 
-   let searchInput = document.getElementsByTagName('input')[0].value; //variable to store text content of searchBoxInput *** NOT SURE I NEED THIS? 
-   console.log(searchInput)
-   
-   const names = document.querySelectorAll('h3');// Variable to store h3 tags(aka student names) as a list *** NOT SURE I NEED THIS?
-   console.log(names);
+let searchInput = document.getElementsByClassName('userSearchInput')[0].value; //variable to store text content of searchBoxInput *** NOT SURE I NEED THIS? 
+// WHY didn't this work as a definition for searchInput? document.getElementsByTagName('input')[0].value;
+
+const names = document.querySelectorAll('h3');// Variable to store h3 tags(aka student names) as a list *** NOT SURE I NEED THIS?
+console.log(names);
    
 
 
    const performSearch = (searchInput, names) => {
       console.log('You are in performSearch');
       // 1a. Create two `console.log` statements to log out the `parameters` — searchInput, names 
-      console.log(document.getElementsByClassName('userSearchInput')[0].value); //add .toString()? right after value
+      console.log(searchInput);
+      // console.log(document.getElementsByClassName('userSearchInput')[0].value); //add .toString()? right after value
       console.log('searchInput above');
       console.log(names);
+      console.log('names above');
       // 1b. Loop over the `names` parameter
       for (let i = 0; i < names.length; i += 1) {
           // 1b. Remove the 'match' class name from each `names[i]` 
@@ -133,7 +135,8 @@ appendPageLinks(studentList);
       event.preventDefault();
       performSearch(searchInput, names);
       console.log('Search Box keyup is functional!');
-      
+      console.log(event.target.value);
+      console.log('keyup event.target.value result above');
    });
 // };
 
