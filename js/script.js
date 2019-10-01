@@ -85,7 +85,8 @@ searchBoxInput.className = 'userSearchInput';
 searchBoxInput.placeholder = "Search for students..."; //defines placeholder text for searchBoxInput node
 searchDiv.appendChild(searchBoxInput);//appends searchBoxInput node to searchDiv (no need to do this: document.querySelector('.student-search').appendChild(searchBoxInput);)
 const searchButton = document.createElement('button');
-searchButton.textContent = 'search';
+searchButton.className = 'submit';
+searchButton.textContent = 'submit';
 searchDiv.appendChild(searchButton); //appends searchButton node to searchDiv node
 
 let searchInput = document.getElementsByClassName('userSearchInput')[0].value; //variable to store text content of searchBoxInput *** NOT SURE I NEED THIS? 
@@ -100,7 +101,7 @@ console.log(names);
       console.log('You are in performSearch');
       // 1a. Create two `console.log` statements to log out the `parameters` — searchInput, names 
       console.log(searchInput);
-      // console.log(document.getElementsByClassName('userSearchInput')[0].value); //add .toString()? right after value
+            // TESTING line console.log(document.getElementsByClassName('userSearchInput')[0].value); //add .toString()? right after value
       console.log('searchInput above');
       console.log(names);
       console.log('names above');
@@ -115,7 +116,7 @@ console.log(names);
       
       // 1c. Create a conditional that checks two conditions:
         // 1ca. If the `searchInput.value.length` does not equal the digit zero AND `names[i].textContent.toLowerCase()` `includes` `searchInput.value.toLowerCase())`
-      //   if ((searchInput.value.length !== 0) && (names[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase()) )) { 
+         if ((searchInput.value.length !== 0) && (names[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase()) )) { 
           // 1cb. Add the class name 'match` to `names[i]` 
           names[i].className = 'match';
         }
